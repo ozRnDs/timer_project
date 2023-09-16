@@ -1,0 +1,9 @@
+[submodule "timer_api"]
+	path = timer_api
+	url = ./timer_api/
+[submodule "timer_controller"]
+	path = timer_controller
+	url = ./timer_controller/
+[submodule "timer_db"]
+	path = timer_db
+	url = ./timer_db
