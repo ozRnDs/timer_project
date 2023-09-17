@@ -1,0 +1,9 @@
+[submodule "timer_api"]
+	path = timer_api
+	url = git@github.com:ozRnDs/timer_api.git
+[submodule "timer_db"]
+	path = timer_db
+	url = git@github.com:ozRnDs/timer_db.git
+[submodule "timer_controller"]
+	path = timer_controller
+	url = git@github.com:ozRnDs/timer_controller.git
