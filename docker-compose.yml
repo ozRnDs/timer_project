@@ -1,0 +1,46 @@
+services:
+  timer-api:
+    image: timer_api:0.1.0
+    container_name: timer_api_1
+    networks:
+      - back-db
+    environment:
+      - DB_HOST=timer_db
+      - DB_USER=root
+      - DB_PASSWORD=my_pass
+    expose:
+      - "5000"
+    ports:
+      - "80:5000"
+    depends_on:
+      - timer-db
+  timer-db:
+    image: mysql:latest
+    container_name: timer_db
+    volumes:
+      - /timerApp/db:/var/lib/mysql
+    networks:
+      - back-db
+      - controller-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=my_pass
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+  timer-controller:
+    image: timer_controller:0.1.0
+    container_name: timer_controller_1
+    networks:
+      - controller-db
+    environment:
+      - DB_HOST=timer_db
+      - DB_USER=root
+      - DB_PASSWORD=my_pass
+    depends_on:
+      - timer-db
+      - timer-api
+
+networks:
+  back-db: {}
+  controller-db: {}
